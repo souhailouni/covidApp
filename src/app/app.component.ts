@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +9,12 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   posts: any;
   constructor(private http : HttpClient){
-    this.posts = this.http.get("https://jsonplaceholder.typicode.com/posts");
-    //console.log(this.http.get("https://jsonplaceholder.typicode.com/posts"));
+    let params = new HttpParams().set("id", "68");
+    this.posts = this.http.get("https://jsonplaceholder.typicode.com/posts", {params})
+    .subscribe((value:any) => {
+      this.posts = value;
+      console.log(this.posts);
+    });
   }
   title = 'covidApp';
 }
