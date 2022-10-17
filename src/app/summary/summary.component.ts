@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-summary',
@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./summary.component.css']
 })
 export class SummaryComponent implements OnInit {
-
-  constructor() { }
+  @Input() globalData: any;
+  data: any = "";
+  constructor() {
+    console.log(this.globalData);
+   }
 
   ngOnInit(): void {
   }
