@@ -10,7 +10,6 @@ export class CountryComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges() {
-    console.log(this.USData);
   }
 
 }

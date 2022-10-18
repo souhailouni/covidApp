@@ -16,12 +16,10 @@ export class AppComponent {
       this.globalData = value.Global;
       this.allCountriesData = value.Countries;
       this.allCountriesData.forEach((countryList: any) => {
-        console.log(countryList);
         if (countryList.CountryCode=="US") {
           this.USData = countryList;
         }
       });
-      console.log(this.allCountriesData);
     });
   }
   title = 'covidApp';
