@@ -7,13 +7,21 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  globalData: any = "Here would be the api result soon!";
+  globalData: any = {};
+  allCountriesData: any = [];
+  USData: any = {};
   constructor(public http: HttpClient) {
     this.http.get("https://api.covid19api.com/summary")
     .subscribe((value: any) => {
-      // console.log(value);
       this.globalData = value.Global;
-      console.log(this.globalData);
+      this.allCountriesData = value.Countries;
+      this.allCountriesData.forEach((countryList: any) => {
+        console.log(countryList);
+        if (countryList.CountryCode=="US") {
+          this.USData = countryList;
+        }
+      });
+      console.log(this.allCountriesData);
     });
   }
   title = 'covidApp';
